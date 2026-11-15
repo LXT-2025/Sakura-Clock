@@ -2317,14 +2317,6 @@ if (g_taskbarCreatedMsg != 0 && msg == g_taskbarCreatedMsg) {
     AddTrayIcon(hwnd);
     return 0;
 }
-#ifdef SAKURA_DEBUG_MOVE
-{
-    if (msg != WM_TIMER && msg != WM_PAINT && msg != 0x02E0 /*WM_DPICHANGED*/) {
-        FILE* df = fopen("D:\\sakura_clock\\sakura_move.log", "a");
-        if (df) { fprintf(df, "msg=0x%04X wparam=%d lparam=%ld\n", msg, (int)wParam, (long)lParam); fclose(df); }
-    }
-}
-#endif
 switch (msg) {
 case WM_CREATE: {
 InitAcrylicOnce(hwnd);
