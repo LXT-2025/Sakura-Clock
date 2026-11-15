@@ -20,6 +20,7 @@
 ## ⬇️ 下载
 
 - [SakuraClock.exe](SakuraClock.exe)（推荐，绿色免安装）
+- [XNJ.zip](XNJ.zip)（整合包：程序 + 官网页面）
 - 在线体验页：<https://rowaeb7h.html2.link/>
 
 ## ⌨️ 快捷键（时钟窗口内）
@@ -34,16 +35,10 @@
 | 双击窗口 | 纯净模式 |
 | `ESC` | 退出 |
 
-## 🔨 从源码构建
+## 🔒 关于源码
 
-使用 Dev-C++（TDM-GCC 9.2）打开 `Sakura Clock.dev` 直接编译，或命令行：
-
-```
-g++ -c main.cpp -o main.o
-windres -i Sakura_Clock_private.rc -o Sakura_Clock_private.res -O coff
-g++ main.o Sakura_Clock_private.res -o "Sakura Clock.exe" -lgdi32 -lshell32 -ladvapi32 -mwindows
-```
+本项目为闭源软件，仓库仅发布可执行程序与官网页面，不包含源代码。
 
 ## 📄 许可
 
-仅供学习交流使用。© 2026 LXT, All Rights Reserved.
+© 2026 LXT, All Rights Reserved. 仅供学习交流使用，禁止未经授权的二次分发或逆向工程。
