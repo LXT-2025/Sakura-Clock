@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sakura & Aurora Clock v1.1 - 梦幻樱花极光桌面时钟 | By LXT</title>
+    <meta name="description" content="梦幻樱花极光桌面时钟：原生 Win32 GDI 双缓冲打造，樱花花瓣飘落、指尖生花、Win11 风格桌面窗口控制中心，单文件绿色免安装，极低资源占用。">
+    <meta property="og:title" content="Sakura & Aurora Clock - 梦幻樱花极光桌面时钟">
+    <meta property="og:description" content="樱花飘落 × 极光流光 × 指尖生花，轻量级 Windows 桌面悬浮时钟，单文件绿色免安装。">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="sakura.png">
+    <link rel="icon" type="image/png" href="sakura.png">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: "Segoe UI", "Microsoft YaHei UI", sans-serif;
+            background: #141419;
+            color: #f5f5fa;
+            line-height: 1.6;
+            background-image:
+                radial-gradient(circle at 15% 20%, rgba(244, 143, 177, 0.16), transparent 40%),
+                radial-gradient(circle at 85% 30%, rgba(179, 136, 255, 0.16), transparent 45%);
+        }
+        header {
+            position: sticky; top: 0; z-index: 100;
+            backdrop-filter: blur(14px);
+            background: rgba(20, 20, 25, 0.85);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .nav {
+            max-width: 1080px; margin: 0 auto; padding: 14px 24px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo { font-size: 1.2rem; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(135deg, #ff9ebb, #a18cd1); box-shadow: 0 0 12px #ff9ebb; }
+        @keyframes neonHue {
+            0%, 100% { color: #ff85b3; border-color: #ff85b3; box-shadow: 0 0 12px rgba(255, 133, 179, 0.4); }
+            33%      { color: #c792ea; border-color: #c792ea; box-shadow: 0 0 12px rgba(199, 146, 234, 0.4); }
+            66%      { color: #80deea; border-color: #80deea; box-shadow: 0 0 12px rgba(128, 222, 234, 0.4); }
+        }
+        .author-badge {
+            padding: 5px 15px; border-radius: 20px; background: #2c2a36;
+            border: 1px solid #ff85b3; font-size: 0.9rem; font-weight: 600;
+            animation: neonHue 5s infinite linear;
+        }
+        .hero {
+            max-width: 1080px; margin: 0 auto; padding: 60px 24px;
+            display: grid; grid-template-columns: 1fr 1.1fr; gap: 44px; align-items: center;
+        }
+        h1 {
+            font-size: 2.5rem; line-height: 1.25; margin-bottom: 16px;
+            background: linear-gradient(120deg, #fff 20%, #f8bbd0 65%, #b39ddb 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .desc { color: #a6a6b8; font-size: 1.02rem; margin-bottom: 24px; }
+        .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+        .tag { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); padding: 4px 12px; border-radius: 6px; font-size: 0.85rem; }
+        .btns { display: flex; flex-wrap: wrap; gap: 14px; }
+        .btn-dl {
+            padding: 13px 28px; border-radius: 10px;
+            background: linear-gradient(135deg, #f06292, #ba68c8);
+            color: #fff; font-weight: 600; text-decoration: none;
+            box-shadow: 0 8px 24px rgba(240, 98, 146, 0.35);
+            transition: transform 0.2s;
+        }
+        .btn-dl:hover { transform: translateY(-2px); }
+        .btn-sub {
+            padding: 13px 22px; border-radius: 10px;
+            background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+            color: #fff; font-weight: 600; text-decoration: none;
+        }
+        @keyframes auroraBg {
+            0%, 100% { background-position: 0% 50%; }
+            50%      { background-position: 100% 50%; }
+        }
+        .preview-card {
+            height: 310px; border-radius: 14px; position: relative; overflow: hidden;
+            background: linear-gradient(-45deg, #d87093, #9575cd, #4dd0e1, #f06292);
+            background-size: 300% 300%;
+            animation: auroraBg 12s ease infinite;
+            box-shadow: 0 22px 55px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.18);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-shadow: 2px 3px 8px rgba(45, 25, 60, 0.6);
+        }
+        .p-time { font-size: 4rem; font-weight: 700; letter-spacing: 2px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+        .p-date { font-size: 1.1rem; color: #f5ebff; margin-top: 8px; }
+        .p-tip  { position: absolute; bottom: 12px; font-size: 0.8rem; color: rgba(255,255,255,0.88); z-index: 2; }
+        #petalCanvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+        section { max-width: 1080px; margin: 0 auto; padding: 40px 24px; }
+        h2 { font-size: 1.75rem; text-align: center; margin-bottom: 28px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+        .card {
+            background: rgba(34, 34, 42, 0.78); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px; padding: 22px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .card:hover { transform: translateY(-3px); border-color: rgba(244, 143, 177, 0.45); }
+        .card h3 { font-size: 1.12rem; margin-bottom: 8px; color: #fff; }
+        .card p { color: #a6a6b8; font-size: 0.92rem; }
+        table { width: 100%; border-collapse: collapse; background: rgba(34, 34, 42, 0.78); border-radius: 12px; overflow: hidden; }
+        th, td { padding: 14px 20px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.07); }
+        th { background: rgba(255,255,255,0.05); }
+        kbd { background: #2b2b36; border: 1px solid #555; border-radius: 5px; padding: 2px 8px; font-family: Consolas, monospace; font-size: 0.88rem; }
+        .dl-box {
+            text-align: center; padding: 40px 24px; border-radius: 16px;
+            background: linear-gradient(135deg, rgba(48, 40, 58, 0.85), rgba(32, 34, 46, 0.9));
+            border: 1px solid rgba(244, 143, 177, 0.35);
+        }
+        footer { text-align: center; padding: 28px; color: #a6a6b8; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 30px; }
+        @media (max-width: 820px) { .hero { grid-template-columns: 1fr; text-align: center; } .tags, .btns { justify-content: center; } .p-time { font-size: 3rem; } }
+        @media (prefers-reduced-motion: reduce) { .preview-card, .author-badge { animation: none; } #petalCanvas { display: none; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav">
+            <div class="logo"><span class="dot"></span><span>Sakura & Aurora Clock</span></div>
+            <span class="author-badge">作者: LXT</span>
+        </div>
+    </header>
+
+    <main class="hero">
+        <div>
+            <h1>梦幻樱花极光<br>轻量级桌面悬浮时钟</h1>
+            <p class="desc">基于原生 Win32 GDI 双缓冲打造，融合动态流光渐变、樱花花瓣飘落、指尖生花轨迹与 Win11 风格桌面窗口控制中心。v1.1 新增系统托盘、全局热键、专注计时器与干支节日显示，单文件绿色运行，极低资源占用。</p>
+            <div class="tags">
+                <span class="tag">Windows 10 / 11</span>
+                <span class="tag">v1.1 全新升级</span>
+                <span class="tag">高分屏 DPI 适配</span>
+                <span class="tag">中 / 英双语切换</span>
+                <span class="tag">单文件绿色免安装</span>
+            </div>
+            <div class="btns">
+                <a href="SakuraClock.exe" download class="btn-dl">⬇ 立即下载绿色版 (.exe)</a>
+                <a href="#keys" class="btn-sub">查看快捷键</a>
+            </div>
+        </div>
+        <div class="preview-card">
+            <canvas id="petalCanvas"></canvas>
+            <span class="p-time" id="previewTime">--:--:--</span>
+            <span class="p-date" id="previewDate">----年--月--日</span>
+            <span class="p-tip">A 设置 | W 额外 | C 计时 | 滚轮透明度 | T 置顶 | 右键菜单</span>
+        </div>
+    </main>
+
+    <section>
+        <h2>核心功能特性</h2>
+        <div class="grid">
+            <div class="card"><h3>🌸 樱花飘落与指尖生花</h3><p>背景持续飘落旋转樱花花瓣与呼吸三层辉光；鼠标滑过窗口时，指尖轨迹实时洒下随风摇曳的花瓣。</p></div>
+            <div class="card"><h3>🎨 Win11 风格设置面板</h3><p>按 <strong>A</strong> 键打开现代化深色卡片设置界面，6 种梦幻色系、透明度、语言、自启与报时开关一屏管理。</p></div>
+            <div class="card"><h3>🪟 桌面窗口控制中心</h3><p>按 <strong>W</strong> 键调节桌面任意软件窗口的透明度、置顶任意窗口，或一键隐藏窗口、桌面图标与任务栏。</p></div>
+            <div class="card"><h3>📐 无边框 8 方向自由缩放</h3><p>彻底消除顶部系统白边，拖动四周边缘或四角自由缩放，时钟与日期字号自动等比缩放并记忆窗口位置。</p></div>
+            <div class="card"><h3>🧷 系统托盘与全局热键</h3><p>常驻托盘随开随用，右键菜单直达全部功能；Ctrl+Alt+A/W/T/P 全局唤起设置、额外功能、置顶与穿透。</p></div>
+            <div class="card"><h3>🍅 专注计时器</h3><p>按 <strong>C</strong> 开启 25 分钟专注计时，空格开始/暂停、R 重置；倒计时结束提示音并绽放花瓣雨。</p></div>
+            <div class="card"><h3>📅 干支、节日与年进度</h3><p>日期行显示干支生肖年（如丙午马年），自动识别 10 个中外节日，并提示今年第几天、第几周与距元旦天数。</p></div>
+            <div class="card"><h3>⚡ 高分屏适配与智能省电</h3><p>支持 Per-Monitor V2 高分屏清晰渲染；失焦自动降频省电，最小化收进托盘、后台近零占用。</p></div>
+            <div class="card"><h3>🛡️ 退出自动还原机制</h3><p>所有隐藏的外部窗口、桌面图标与任务栏，在退出程序时均会自动安全恢复，绝不丢失。</p></div>
+        </div>
+    </section>
+
+    <section id="keys">
+        <h2>快捷键指南</h2>
+        <table>
+            <thead><tr><th>快捷键 / 操作</th><th>功能说明</th></tr></thead>
+            <tbody>
+                <tr><td><kbd>A</kbd></td><td>打开 / 关闭 <strong>个性化与设置</strong> 面板（语言、透明度、色系、自启、报时、穿透、自动变色）</td></tr>
+                <tr><td><kbd>W</kbd></td><td>打开 / 关闭 <strong>额外功能</strong> 面板（外部窗口透明度、置顶、隐藏窗口/图标/任务栏）</td></tr>
+                <tr><td><kbd>C</kbd></td><td>开启 / 关闭 <strong>专注计时器</strong>（默认 25:00 倒计时）</td></tr>
+                <tr><td><kbd>空格</kbd></td><td>计时器 <strong>开始 / 暂停</strong></td></tr>
+                <tr><td><kbd>R</kbd></td><td>计时器 <strong>重置</strong> 为 25 分钟</td></tr>
+                <tr><td><kbd>T</kbd></td><td>开启 / 关闭时钟窗口 <strong>始终置顶</strong></td></tr>
+                <tr><td><kbd>鼠标滚轮</kbd></td><td><strong>平滑</strong> 调节时钟窗口透明度</td></tr>
+                <tr><td><kbd>双击窗口</kbd></td><td>切换 <strong>纯净模式</strong>（隐藏/显示底部提示栏）</td></tr>
+                <tr><td><kbd>右键窗口</kbd></td><td>弹出完整功能菜单（显示/隐藏、置顶、穿透、自启、12/24 小时制、显示秒、退出）</td></tr>
+                <tr><td><kbd>ESC</kbd></td><td>关闭弹窗或退出程序（自动恢复所有隐藏项目）</td></tr>
+            </tbody>
+        </table>
+
+        <h2 style="margin-top:34px;">全局热键（任意程序前台均生效）</h2>
+        <table>
+            <thead><tr><th>热键</th><th>功能</th></tr></thead>
+            <tbody>
+                <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>A</kbd></td><td>唤起个性化与设置面板</td></tr>
+                <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>W</kbd></td><td>唤起额外功能面板</td></tr>
+                <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd></td><td>切换时钟始终置顶</td></tr>
+                <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>P</kbd></td><td>切换鼠标点击穿透（穿透后点击直达桌面）</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>v1.1 更新日志 <span style="font-size:0.8rem;color:#a6a6b8;font-weight:400;">（本次共 25 项升级）</span></h2>
+        <div class="grid">
+            <div class="card">
+                <h3>🧩 系统集成</h3>
+                <p>系统托盘常驻与右键菜单 · 最小化收进托盘 · 四个全局热键 · 开机自启（注册表）<br>
+                单实例运行 · 鼠标点击穿透 · 资源管理器重启自动恢复托盘 · 多显示器工作区居中</p>
+            </div>
+            <div class="card">
+                <h3>🕰 时间信息</h3>
+                <p>干支生肖年显示 · 10 个节日问候 · 今年第 N 天 / 第 N 周 / 距元旦天数 · 秒进度线<br>
+                12/24 小时制切换 · 显示秒开关 · 整点报时（可开关）</p>
+            </div>
+            <div class="card">
+                <h3>✨ 视觉与交互</h3>
+                <p>新增「极夜」色系共 6 种 · 按昼夜自动变色 · 三层辉光光点 · 真樱花瓣缺口造型 · 时间文字外发光<br>
+                滚轮平滑透明度 · 拖动边缘自动吸附 · 窗口位置大小记忆 · 番茄专注计时 + 结束花瓣雨</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="dl-box">
+            <h2>下载体验 Sakura & Aurora Clock</h2>
+            <p class="desc" style="margin-top: 10px;">适用系统：Windows 10 / 11 (64-bit) &nbsp;|&nbsp; 单文件绿色免安装 &nbsp;|&nbsp; 作者：LXT</p>
+            <a href="SakuraClock.exe" download class="btn-dl">⬇ 下载 SakuraClock.exe</a>
+        </div>
+    </section>
+
+    <footer>Sakura & Aurora Dreamy Clock &copy; 2026 &nbsp;|&nbsp; Designed by <strong>LXT</strong></footer>
+
+    <script>
+        (function () {
+            // ===== 实时走时预览 =====
+            var weekZh = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+            var elTime = document.getElementById("previewTime");
+            var elDate = document.getElementById("previewDate");
+            function pad(n) { return n < 10 ? "0" + n : "" + n; }
+            function tick() {
+                var now = new Date();
+                elTime.textContent = pad(now.getHours()) + ":" + pad(now.getMinutes()) + ":" + pad(now.getSeconds());
+                elDate.textContent = now.getFullYear() + "年" + pad(now.getMonth() + 1) + "月" + pad(now.getDate()) + "日   " + weekZh[now.getDay()];
+            }
+            tick();
+            setInterval(tick, 1000);
+
+            // ===== 预览卡樱花飘落动画（模拟主程序粒子） =====
+            var canvas = document.getElementById("petalCanvas");
+            if (!canvas.getContext) return;
+            var ctx = canvas.getContext("2d");
+            var petals = [];
+            var COLORS = ["#ffc3da", "#ffdeec", "#faafd0"];
+            var PETAL_COUNT = 18;
+            function resize() {
+                canvas.width = canvas.offsetWidth;
+                canvas.height = canvas.offsetHeight;
+            }
+            function resetPetal(p, randomY) {
+                p.x = Math.random() * canvas.width;
+                p.y = randomY ? Math.random() * canvas.height : -20;
+                p.speedY = 0.5 + Math.random() * 1.1;
+                p.swayAmp = 10 + Math.random() * 22;
+                p.swayFreq = 0.015 + Math.random() * 0.02;
+                p.phase = Math.random() * Math.PI * 2;
+                p.size = 4 + Math.random() * 4;
+                p.angle = Math.random() * Math.PI * 2;
+                p.angleSpeed = (Math.random() - 0.5) * 0.05;
+                p.color = COLORS[Math.floor(Math.random() * COLORS.length)];
+            }
+            function init() {
+                resize();
+                petals = [];
+                for (var i = 0; i < PETAL_COUNT; i++) {
+                    var p = {};
+                    resetPetal(p, true);
+                    petals.push(p);
+                }
+            }
+            function drawPetal(p) {
+                var swayX = p.x + Math.sin(p.phase) * p.swayAmp;
+                ctx.save();
+                ctx.translate(swayX, p.y);
+                ctx.rotate(p.angle);
+                ctx.fillStyle = p.color;
+                ctx.globalAlpha = 0.9;
+                ctx.beginPath();
+                // 与主程序一致：顶部带缺口的樱花瓣
+                var s = p.size;
+                ctx.moveTo(0, -s);
+                ctx.quadraticCurveTo(s * 0.5, -s * 0.7, s * 0.6, 0);
+                ctx.quadraticCurveTo(s * 0.55, s * 0.7, 0, s * 1.2);
+                ctx.quadraticCurveTo(-s * 0.55, s * 0.7, -s * 0.6, 0);
+                ctx.quadraticCurveTo(-s * 0.5, -s * 0.7, 0, -s);
+                ctx.fill();
+                ctx.restore();
+            }
+            function loop() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (var i = 0; i < petals.length; i++) {
+                    var p = petals[i];
+                    p.y += p.speedY;
+                    p.phase += p.swayFreq;
+                    p.angle += p.angleSpeed;
+                    if (p.y > canvas.height + 20) resetPetal(p, false);
+                    drawPetal(p);
+                }
+                requestAnimationFrame(loop);
+            }
+            init();
+            loop();
+            window.addEventListener("resize", init);
+        })();
+    </script>
+</body>
+</html>

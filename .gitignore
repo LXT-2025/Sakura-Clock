@@ -1,0 +1,8 @@
+# 编译中间产物
+*.o
+*.res
+# 本地运行配置
+sakura_clock.ini
+# 临时目录
+.edgeclone/
+build/

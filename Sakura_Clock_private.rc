@@ -1,0 +1,36 @@
+/* THIS FILE WILL BE OVERWRITTEN BY DEV-C++ */
+/* DO NOT EDIT! */
+
+#include <windows.h> // include for version info constants
+
+
+A ICON "Sakura Clock.ico"
+
+//
+// TO CHANGE VERSION INFORMATION, EDIT PROJECT OPTIONS...
+//
+1 VERSIONINFO
+FILEVERSION 1,1,0,0
+PRODUCTVERSION 1,1,0,0
+FILETYPE VFT_APP
+{
+  BLOCK "StringFileInfo"
+  {
+    BLOCK "040904E4"
+    {
+      VALUE "CompanyName", "(C)2026 LXT,All Rights Reserved."
+      VALUE "FileVersion", "1.1.0.0"
+      VALUE "FileDescription", "Sakura Clock - Dreamy Desktop Clock"
+      VALUE "InternalName", "Sakura Clock"
+      VALUE "LegalCopyright", "(C)2026 LXT,All Rights Reserved."
+      VALUE "LegalTrademarks", "(C)2026 LXT,All Rights Reserved."
+      VALUE "OriginalFilename", "Sakura Clock.exe"
+      VALUE "ProductName", "Sakura & Aurora Clock"
+      VALUE "ProductVersion", "1.1.0.0"
+    }
+  }
+  BLOCK "VarFileInfo"
+  {
+    VALUE "Translation", 0x0409, 1252
+  }
+}
