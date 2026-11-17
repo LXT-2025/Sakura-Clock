@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sakura & Aurora Clock v1.2.6 - 梦幻樱花极光桌面时钟 | By LXT</title>
+    <title>Sakura & Aurora Clock v1.2.7 - 梦幻樱花极光桌面时钟 | By LXT</title>
     <meta name="description" content="梦幻樱花极光桌面时钟：原生 Win32 GDI 双缓冲打造，樱花花瓣飘落、指尖生花、Win11 风格桌面窗口控制中心，单文件绿色免安装，极低资源占用。">
     <meta property="og:title" content="Sakura & Aurora Clock - 梦幻樱花极光桌面时钟">
     <meta property="og:description" content="樱花飘落 × 极光流光 × 指尖生花，轻量级 Windows 桌面悬浮时钟，单文件绿色免安装。">
@@ -125,7 +125,7 @@
             <p class="desc">基于原生 Win32 GDI 双缓冲打造，融合动态流光渐变、樱花花瓣飘落、指尖生花轨迹与 Win11 风格桌面窗口控制中心。v1.2 新增一键切换主题色系、流星划空动效、暖光辉影层次与今日番茄统计，渲染性能较 v1.1 大幅优化，单文件绿色运行，极低资源占用。</p>
             <div class="tags">
                 <span class="tag">Windows 10 / 11</span>
-                <span class="tag">v1.2.6 全新升级</span>
+                <span class="tag">v1.2.7 全新升级</span>
                 <span class="tag">高分屏 DPI 适配</span>
                 <span class="tag">中 / 英双语切换</span>
                 <span class="tag">单文件绿色免安装</span>
@@ -194,6 +194,31 @@
                 <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>U</kbd></td><td><strong>检查输入拦截</strong>：诊断键盘钩子 / 全局封锁 / 光标裁剪 / 鼠标拦截，并生成诊断报告</td></tr>
             </tbody>
         </table>
+        <p style="margin-top:14px;color:#c9c9d8;font-size:0.95rem;">托盘菜单另有两项：<strong>识别拦截来源（钩子 / 过滤驱动 / 课堂软件）</strong>、<strong>打开输入诊断报告</strong>；需要把报告发给别人时，也可以直接跑 <code>Sakura Clock.exe --input-diag</code>，一条命令生成同目录下的 <code>sakura_input_diag.txt</code>。</p>
+    </section>
+
+    <section id="changelog127">
+        <h2>更新日志 · v1.2.7 <span style="font-size:0.8rem;color:#a6a6b8;font-weight:400;">（2026-11-17 发布）</span></h2>
+        <div class="grid">
+            <div class="card">
+                <h3>🎓 认出「极域电子教室」这类课堂管理软件</h3>
+                <p>上一版只能告诉你"有别的程序在吞按键"，这一版能<strong>点名</strong>：扫描正在运行的 <code>StudentMain.exe</code>（极域电子教室学生端）、<code>TopSight.exe</code>（旧版极域）、<code>Redwood.exe</code>（红蜘蛛）、<code>NetSupport.exe</code> 等课堂/锁屏类软件，并判断它是否正显示<strong>全屏锁定窗口</strong>；对名字里带 classroom / studentmain / classmaster 等特征的可疑进程也会标注（明确写"按进程名推测"，不冒充结论）。顺带检查 <code>DisableTaskMgr</code> 策略——课堂软件常见的"防逃跑"设置，被禁用时会写进报告。</p>
+            </div>
+            <div class="card">
+                <h3>🧬 内核键盘/鼠标过滤驱动检测</h3>
+                <p>课堂管理软件锁键鼠有两条路：用户态全局低级钩子，或把厂商驱动挂到 <code>kbdclass</code> / <code>mouclass</code> 的 UpperFilters 上做内核级过滤。本版直接读注册表比对：<strong>干净系统上键盘类只有 kbdclass、鼠标类只有 mouclass</strong>，多出来的名字就是厂商加的过滤驱动——报告里会原样列出驱动名（如某课堂软件的 kbd 过滤驱动）。这一步不需要管理员权限，也不碰任何进程。</p>
+            </div>
+            <div class="card">
+                <h3>🩺 两个新出口：来源识别 + 命令行诊断</h3>
+                <p>托盘菜单新增<strong>「识别拦截来源（钩子 / 过滤驱动 / 课堂软件）」</strong>与<strong>「打开输入诊断报告」</strong>；另外支持 <code>Sakura Clock.exe --input-diag</code>——不建窗口、不驻留、不抢单实例，直接生成一份 <code>sakura_input_diag.txt</code>（已加 UTF-8 BOM，记事本打开不乱码），把"谁在拦、用哪种方式拦、光标范围、任务管理器策略"一次写清，方便直接发给会修的人。</p>
+            </div>
+        </div>
+        <div class="grid" style="margin-top:18px;">
+            <div class="card">
+                <h3>⚠️ 边界说明：为什么不"帮你把钩子拆了"</h3>
+                <p>极域这类软件的锁键盘，用户态钩子对象在<strong>对方进程</strong>里（跨进程 UnhookWindowsHookEx 要对方的 HHOOK，而 HHOOK 无法枚举），驱动级拦截更在<strong>内核</strong>（卸载需管理员权限并重启）。所以本程序坚持只做定位与自己的收尾，<strong>不结束别人的进程、不加载驱动、不改策略</strong>——那既越权也容易把桌面搞崩。真正有效的出口只有三个：退出该课堂软件（或教师端解除锁定）、按 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd> 进安全桌面（用户级钩子在那里不生效）、确认不需要后卸载它并重启。</p>
+            </div>
+        </div>
     </section>
 
     <section id="changelog126">
@@ -349,7 +374,7 @@
 
     <section>
         <div class="dl-box">
-            <h2>下载体验 Sakura & Aurora Clock v1.2.6</h2>
+            <h2>下载体验 Sakura & Aurora Clock v1.2.7</h2>
             <p class="desc" style="margin-top: 10px;">适用系统：Windows 10 / 11 (64-bit) &nbsp;|&nbsp; 单文件绿色免安装 &nbsp;|&nbsp; 作者：LXT</p>
             <a href="https://lxt-2025.github.io/Sakura-Clock/SakuraClock.exe" download class="btn-dl">⬇ 下载 SakuraClock.exe</a>
             <a href="https://lxt-2025.github.io/Sakura-Clock/XNJ.zip" download class="btn-sub" style="margin-left: 12px;">⬇ 下载整合包 XNJ.zip</a>
