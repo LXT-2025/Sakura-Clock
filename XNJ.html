@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sakura & Aurora Clock v1.1 - 梦幻樱花极光桌面时钟 | By LXT</title>
+    <title>Sakura & Aurora Clock v1.2 - 梦幻樱花极光桌面时钟 | By LXT</title>
     <meta name="description" content="梦幻樱花极光桌面时钟：原生 Win32 GDI 双缓冲打造，樱花花瓣飘落、指尖生花、Win11 风格桌面窗口控制中心，单文件绿色免安装，极低资源占用。">
     <meta property="og:title" content="Sakura & Aurora Clock - 梦幻樱花极光桌面时钟">
     <meta property="og:description" content="樱花飘落 × 极光流光 × 指尖生花，轻量级 Windows 桌面悬浮时钟，单文件绿色免安装。">
@@ -122,10 +122,10 @@
     <main class="hero">
         <div>
             <h1>梦幻樱花极光<br>轻量级桌面悬浮时钟</h1>
-            <p class="desc">基于原生 Win32 GDI 双缓冲打造，融合动态流光渐变、樱花花瓣飘落、指尖生花轨迹与 Win11 风格桌面窗口控制中心。v1.1 新增系统托盘、全局热键、专注计时器与干支节日显示，单文件绿色运行，极低资源占用。</p>
+            <p class="desc">基于原生 Win32 GDI 双缓冲打造，融合动态流光渐变、樱花花瓣飘落、指尖生花轨迹与 Win11 风格桌面窗口控制中心。v1.2 新增一键切换主题色系、流星划空动效、暖光辉影层次与今日番茄统计，渲染性能较 v1.1 大幅优化，单文件绿色运行，极低资源占用。</p>
             <div class="tags">
                 <span class="tag">Windows 10 / 11</span>
-                <span class="tag">v1.1 全新升级</span>
+                <span class="tag">v1.2 全新升级</span>
                 <span class="tag">高分屏 DPI 适配</span>
                 <span class="tag">中 / 英双语切换</span>
                 <span class="tag">单文件绿色免安装</span>
@@ -140,7 +140,7 @@
             <canvas id="petalCanvas"></canvas>
             <span class="p-time" id="previewTime">--:--:--</span>
             <span class="p-date" id="previewDate">----年--月--日</span>
-            <span class="p-tip">A 设置 | W 额外 | C 计时 | 滚轮透明度 | T 置顶 | 右键菜单</span>
+            <span class="p-tip">A 设置 | W 额外 | C 计时 | S 主题 | 滚轮透明度 | T 置顶 | 右键菜单</span>
         </div>
     </main>
 
@@ -167,6 +167,7 @@
                 <tr><td><kbd>A</kbd></td><td>打开 / 关闭 <strong>个性化与设置</strong> 面板（语言、透明度、色系、自启、报时、穿透、自动变色）</td></tr>
                 <tr><td><kbd>W</kbd></td><td>打开 / 关闭 <strong>额外功能</strong> 面板（外部窗口透明度、置顶、隐藏窗口/图标/任务栏）</td></tr>
                 <tr><td><kbd>C</kbd></td><td>开启 / 关闭 <strong>专注计时器</strong>（默认 25:00 倒计时）</td></tr>
+                <tr><td><kbd>S</kbd></td><td>循环切换 <strong>主题色系</strong>（6 种梦幻配色一键流转）</td></tr>
                 <tr><td><kbd>空格</kbd></td><td>计时器 <strong>开始 / 暂停</strong></td></tr>
                 <tr><td><kbd>R</kbd></td><td>计时器 <strong>重置</strong> 为 25 分钟</td></tr>
                 <tr><td><kbd>T</kbd></td><td>开启 / 关闭时钟窗口 <strong>始终置顶</strong></td></tr>
@@ -185,12 +186,48 @@
                 <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>W</kbd></td><td>唤起额外功能面板</td></tr>
                 <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd></td><td>切换时钟始终置顶</td></tr>
                 <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>P</kbd></td><td>切换鼠标点击穿透（穿透后点击直达桌面）</td></tr>
+                <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>C</kbd></td><td>开启 / 关闭专注计时面板</td></tr>
+                <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>S</kbd></td><td>循环切换主题色系（共 6 种）</td></tr>
             </tbody>
         </table>
     </section>
 
+    <section id="changelog">
+        <h2>更新日志 · v1.2 <span style="font-size:0.8rem;color:#a6a6b8;font-weight:400;">（2026-11-16 发布，共 7 项升级）</span></h2>
+        <div class="grid">
+            <div class="card">
+                <h3>🎨 主题一键切换</h3>
+                <p>新增全局热键 <strong>Ctrl+Alt+S</strong> 循环切换 6 大主题色系；托盘菜单新增「主题色系」子菜单可直接勾选。手动选择主题时自动关闭"按时段自动变色"，选择即刻生效。</p>
+            </div>
+            <div class="card">
+                <h3>🍅 专注计时增强</h3>
+                <p>新增<strong>今日完成番茄数统计</strong>（跨日自动归零、持久保存）；专注结束时托盘气泡通知 + 花瓣爆发 + 提示音；补全 <strong>Ctrl+Alt+C</strong> 全局热键与托盘快捷开关，专注行显示「· 今日 N」。</p>
+            </div>
+            <div class="card">
+                <h3>🌠 流星划空动效</h3>
+                <p>夜空中随机 7~18 秒划过一颗流星，斜向坠落并带 9 段渐隐辉光尾迹，与樱花花瓣、极光流转让画面更有层次。</p>
+            </div>
+            <div class="card">
+                <h3>💡 光影层次</h3>
+                <p>新增中央暖光 Bloom（随主题变色、9 秒呼吸周期）与四角暗角 Vignette；时间文字外发光颜色跟随主题，极光主题下光色随色相流转。</p>
+            </div>
+            <div class="card">
+                <h3>🌸 花瓣随主题换装</h3>
+                <p>樱花花瓣三色配色 + 时间辉光全面主题化：幻紫、薄荷、落日、极夜各配专属色系，极光主题下花瓣与光色同步流转。</p>
+            </div>
+            <div class="card">
+                <h3>⚡ 渲染性能翻倍优化</h3>
+                <p>背景三层（渐变/暗角/暖光）预合成为单张位图，文字绘制免裁剪，配合空闲降载（失焦/最小化自动降频），单帧耗时 8.1ms → 6.0ms，整机 CPU 占用约省一半，后台近零占用。</p>
+            </div>
+            <div class="card">
+                <h3>🛠 稳定性与兼容</h3>
+                <p>画刷缓存重建时正确归还设备上下文，杜绝 GDI 句柄泄漏；msimg32 缺失时自动回退旧渲染路径；版本号升级至 v1.2.0。</p>
+            </div>
+        </div>
+    </section>
+
     <section>
-        <h2>v1.1 更新日志 <span style="font-size:0.8rem;color:#a6a6b8;font-weight:400;">（本次共 25 项升级）</span></h2>
+        <h2>历史版本 · v1.1 更新日志 <span style="font-size:0.8rem;color:#a6a6b8;font-weight:400;">（2026-11-15 发布，共 25 项升级）</span></h2>
         <div class="grid">
             <div class="card">
                 <h3>🧩 系统集成</h3>
@@ -216,7 +253,7 @@
 
     <section>
         <div class="dl-box">
-            <h2>下载体验 Sakura & Aurora Clock</h2>
+            <h2>下载体验 Sakura & Aurora Clock v1.2</h2>
             <p class="desc" style="margin-top: 10px;">适用系统：Windows 10 / 11 (64-bit) &nbsp;|&nbsp; 单文件绿色免安装 &nbsp;|&nbsp; 作者：LXT</p>
             <a href="https://lxt-2025.github.io/Sakura-Clock/SakuraClock.exe" download class="btn-dl">⬇ 下载 SakuraClock.exe</a>
             <a href="https://lxt-2025.github.io/Sakura-Clock/XNJ.zip" download class="btn-sub" style="margin-left: 12px;">⬇ 下载整合包 XNJ.zip</a>
