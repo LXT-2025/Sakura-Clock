@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sakura & Aurora Clock v1.2.4 - 梦幻樱花极光桌面时钟 | By LXT</title>
+    <title>Sakura & Aurora Clock v1.2.5 - 梦幻樱花极光桌面时钟 | By LXT</title>
     <meta name="description" content="梦幻樱花极光桌面时钟：原生 Win32 GDI 双缓冲打造，樱花花瓣飘落、指尖生花、Win11 风格桌面窗口控制中心，单文件绿色免安装，极低资源占用。">
     <meta property="og:title" content="Sakura & Aurora Clock - 梦幻樱花极光桌面时钟">
     <meta property="og:description" content="樱花飘落 × 极光流光 × 指尖生花，轻量级 Windows 桌面悬浮时钟，单文件绿色免安装。">
@@ -125,7 +125,7 @@
             <p class="desc">基于原生 Win32 GDI 双缓冲打造，融合动态流光渐变、樱花花瓣飘落、指尖生花轨迹与 Win11 风格桌面窗口控制中心。v1.2 新增一键切换主题色系、流星划空动效、暖光辉影层次与今日番茄统计，渲染性能较 v1.1 大幅优化，单文件绿色运行，极低资源占用。</p>
             <div class="tags">
                 <span class="tag">Windows 10 / 11</span>
-                <span class="tag">v1.2.4 全新升级</span>
+                <span class="tag">v1.2.5 全新升级</span>
                 <span class="tag">高分屏 DPI 适配</span>
                 <span class="tag">中 / 英双语切换</span>
                 <span class="tag">单文件绿色免安装</span>
@@ -191,8 +191,27 @@
                 <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>S</kbd></td><td>循环切换主题色系（共 6 种）</td></tr>
                 <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>F</kbd></td><td>一键全屏 / 还原时钟窗口（无需聚焦时钟即可触发）</td></tr>
                 <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>X</kbd></td><td><strong>紧急解除控制</strong>：恢复被隐藏的窗口 / 任务栏 / 桌面图标，关闭穿透与全屏透明（鼠标键盘失控时的救命键）</td></tr>
+                <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>U</kbd></td><td><strong>解除外部输入锁定</strong>：释放其他程序留下的光标限制、全局输入封锁、卡住的按键与鼠标捕获</td></tr>
             </tbody>
         </table>
+    </section>
+
+    <section id="changelog125">
+        <h2>更新日志 · v1.2.5 <span style="font-size:0.8rem;color:#a6a6b8;font-weight:400;">（2026-11-17 发布）</span></h2>
+        <div class="grid">
+            <div class="card">
+                <h3>🎯 解除「其他程序」的输入锁定</h3>
+                <p>电脑上别的软件可能把鼠标键盘锁住，本轮针对四种最常见形态逐一处理：<strong>光标被限制在一小块区域</strong>（游戏／全屏程序异常退出后没还原，表现为"鼠标只能在半屏动"）——启动立即检测并释放裁剪矩形；<strong>指针被丢到屏幕外</strong>（拔掉副屏、切换分辨率后）——自动移回可见区域；<strong>全局输入封锁</strong>（BlockInput 残留）——注入被系统拒绝时先尝试解封再复测；<strong>卡死的鼠标捕获／模态循环</strong>——向前台窗口发送 WM_CANCELMODE 撤销其捕获，不用结束别人进程。</p>
+            </div>
+            <div class="card">
+                <h3>⌨️ 卡住的按键自动复位</h3>
+                <p>锁屏工具或游戏崩溃后常常留下"按下却没抬起"的 Ctrl／Alt／Shift／Win 或鼠标按键，症状是所有点击都变成组合键、整个桌面一直在拖拽选区。新版本会检测这些卡住的键并<strong>补发抬起事件</strong>，瞬间恢复正常操作。启动后 8 秒守护期内还会每 4 秒复检一次光标范围，期间被别的程序重新锁住也会立刻解开并提示。</p>
+            </div>
+            <div class="card">
+                <h3>🩺 诊断提示 + 一键解锁</h3>
+                <p>解除时托盘会弹出气泡，说明<strong>具体检测到哪种锁定、修了什么</strong>，并给出当前前台程序的进程名（便于你判断是谁锁的）；真的解不开时会提示按 Ctrl+Alt+Del 结束可疑程序，而不是让你瞎猜。另新增热键 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>U</kbd> 与托盘菜单「解除外部输入锁定」，任何时候都能手动跑一遍完整检查。</p>
+            </div>
+        </div>
     </section>
 
     <section id="changelog124">
@@ -312,7 +331,7 @@
 
     <section>
         <div class="dl-box">
-            <h2>下载体验 Sakura & Aurora Clock v1.2.4</h2>
+            <h2>下载体验 Sakura & Aurora Clock v1.2.5</h2>
             <p class="desc" style="margin-top: 10px;">适用系统：Windows 10 / 11 (64-bit) &nbsp;|&nbsp; 单文件绿色免安装 &nbsp;|&nbsp; 作者：LXT</p>
             <a href="https://lxt-2025.github.io/Sakura-Clock/SakuraClock.exe" download class="btn-dl">⬇ 下载 SakuraClock.exe</a>
             <a href="https://lxt-2025.github.io/Sakura-Clock/XNJ.zip" download class="btn-sub" style="margin-left: 12px;">⬇ 下载整合包 XNJ.zip</a>
