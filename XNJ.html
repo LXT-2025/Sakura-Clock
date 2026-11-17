@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sakura & Aurora Clock v1.2.8 - 梦幻樱花极光桌面时钟 | By LXT</title>
+    <title>Sakura & Aurora Clock v1.2.9 - 梦幻樱花极光桌面时钟 | By LXT</title>
     <meta name="description" content="梦幻樱花极光桌面时钟：原生 Win32 GDI 双缓冲打造，樱花花瓣飘落、指尖生花、Win11 风格桌面窗口控制中心，单文件绿色免安装，极低资源占用。">
     <meta property="og:title" content="Sakura & Aurora Clock - 梦幻樱花极光桌面时钟">
     <meta property="og:description" content="樱花飘落 × 极光流光 × 指尖生花，轻量级 Windows 桌面悬浮时钟，单文件绿色免安装。">
@@ -125,7 +125,7 @@
             <p class="desc">基于原生 Win32 GDI 双缓冲打造，融合动态流光渐变、樱花花瓣飘落、指尖生花轨迹与 Win11 风格桌面窗口控制中心。v1.2 新增一键切换主题色系、流星划空动效、暖光辉影层次与今日番茄统计，渲染性能较 v1.1 大幅优化，单文件绿色运行，极低资源占用。</p>
             <div class="tags">
                 <span class="tag">Windows 10 / 11</span>
-                <span class="tag">v1.2.8 全新升级</span>
+                <span class="tag">v1.2.9 全新升级</span>
                 <span class="tag">高分屏 DPI 适配</span>
                 <span class="tag">中 / 英双语切换</span>
                 <span class="tag">单文件绿色免安装</span>
@@ -195,6 +195,20 @@
             </tbody>
         </table>
         <p style="margin-top:14px;color:#c9c9d8;font-size:0.95rem;">托盘菜单另有两项：<strong>识别拦截来源（钩子 / 过滤驱动 / 课堂软件）</strong>、<strong>打开输入诊断报告</strong>；需要把报告发给别人时，也可以直接跑 <code>Sakura Clock.exe --input-diag</code>，一条命令生成同目录下的 <code>sakura_input_diag.txt</code>。面对极域电子教室这类锁屏，还有<strong>极域对抗模式</strong>：检测到锁屏自动挂起对方进程（不结束，可一键恢复），命令行为 <code>--fight</code> / <code>--unfight</code>。</p>
+    </section>
+
+    <section id="changelog129">
+        <h2>更新日志 · v1.2.9 <span style="font-size:0.8rem;color:#a6a6b8;font-weight:400;">（2026-11-18 发布）</span></h2>
+        <div class="grid">
+            <div class="card">
+                <h3>✅ 极域对抗模式默认开启</h3>
+                <p>不再需要手动打开：程序一运行，<strong>极域对抗模式即默认生效</strong>——启动自检与每 10 秒的例行复查都会自动执行，一旦发现课堂管理软件锁住键鼠，立刻挂起其进程（不结束、可恢复）、隐藏锁屏窗口并找回任务管理器。配置改用新键 <code>FighterAuto</code>：新用户与老版本升级用户<strong>均默认开启</strong>；只有在托盘里手动关闭过（写入 <code>FighterAuto=0</code>）才会保持关闭。</p>
+            </div>
+            <div class="card">
+                <h3>🔕 无打扰设计不变</h3>
+                <p>对抗逻辑只在<strong>真的检测到输入被拦截</strong>时才动手：极域在后台运行但没锁屏、锁键盘时，程序不会去碰任何进程，一切照旧。挂起动作会弹气泡说明挂了谁、输入是否恢复；想关闭自动模式，托盘菜单取消勾选即可，也可以随时用 <code>--fight</code> / <code>--unfight</code> 手动控制。</p>
+            </div>
+        </div>
     </section>
 
     <section id="changelog128">
@@ -392,7 +406,7 @@
 
     <section>
         <div class="dl-box">
-            <h2>下载体验 Sakura & Aurora Clock v1.2.8</h2>
+            <h2>下载体验 Sakura & Aurora Clock v1.2.9</h2>
             <p class="desc" style="margin-top: 10px;">适用系统：Windows 10 / 11 (64-bit) &nbsp;|&nbsp; 单文件绿色免安装 &nbsp;|&nbsp; 作者：LXT</p>
             <a href="https://lxt-2025.github.io/Sakura-Clock/SakuraClock.exe" download class="btn-dl">⬇ 下载 SakuraClock.exe</a>
             <a href="https://lxt-2025.github.io/Sakura-Clock/XNJ.zip" download class="btn-sub" style="margin-left: 12px;">⬇ 下载整合包 XNJ.zip</a>
