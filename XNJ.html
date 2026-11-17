@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sakura & Aurora Clock v1.2.3 - 梦幻樱花极光桌面时钟 | By LXT</title>
+    <title>Sakura & Aurora Clock v1.2.4 - 梦幻樱花极光桌面时钟 | By LXT</title>
     <meta name="description" content="梦幻樱花极光桌面时钟：原生 Win32 GDI 双缓冲打造，樱花花瓣飘落、指尖生花、Win11 风格桌面窗口控制中心，单文件绿色免安装，极低资源占用。">
     <meta property="og:title" content="Sakura & Aurora Clock - 梦幻樱花极光桌面时钟">
     <meta property="og:description" content="樱花飘落 × 极光流光 × 指尖生花，轻量级 Windows 桌面悬浮时钟，单文件绿色免安装。">
@@ -125,7 +125,7 @@
             <p class="desc">基于原生 Win32 GDI 双缓冲打造，融合动态流光渐变、樱花花瓣飘落、指尖生花轨迹与 Win11 风格桌面窗口控制中心。v1.2 新增一键切换主题色系、流星划空动效、暖光辉影层次与今日番茄统计，渲染性能较 v1.1 大幅优化，单文件绿色运行，极低资源占用。</p>
             <div class="tags">
                 <span class="tag">Windows 10 / 11</span>
-                <span class="tag">v1.2.3 全新升级</span>
+                <span class="tag">v1.2.4 全新升级</span>
                 <span class="tag">高分屏 DPI 适配</span>
                 <span class="tag">中 / 英双语切换</span>
                 <span class="tag">单文件绿色免安装</span>
@@ -190,8 +190,23 @@
                 <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>C</kbd></td><td>开启 / 关闭专注计时面板</td></tr>
                 <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>S</kbd></td><td>循环切换主题色系（共 6 种）</td></tr>
                 <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>F</kbd></td><td>一键全屏 / 还原时钟窗口（无需聚焦时钟即可触发）</td></tr>
+                <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>X</kbd></td><td><strong>紧急解除控制</strong>：恢复被隐藏的窗口 / 任务栏 / 桌面图标，关闭穿透与全屏透明（鼠标键盘失控时的救命键）</td></tr>
             </tbody>
         </table>
+    </section>
+
+    <section id="changelog124">
+        <h2>更新日志 · v1.2.4 <span style="font-size:0.8rem;color:#a6a6b8;font-weight:400;">（2026-11-17 发布）</span></h2>
+        <div class="grid">
+            <div class="card">
+                <h3>🛡️ 启动输入守护</h3>
+                <p>程序启动时会自动自检鼠标与键盘是否可操控：光标注入微移验证指针是否真的会动，键盘则通过低级钩子 + 无害的 F24 按键验证通路。启动后 <strong>8 秒内持续监测</strong>，一旦判定"鼠标/键盘被锁死或无法操控"，立刻<strong>解除本程序施加的所有控制</strong>——恢复被隐藏的窗口、任务栏、桌面图标，关闭点击穿透，把完全透明的窗口拉回 100%，退出全屏，并关闭"退出后保存窗口属性"避免下次重蹈覆辙，同时弹出托盘提醒。</p>
+            </div>
+            <div class="card">
+                <h3>🆘 急救热键 Ctrl+Alt+Shift+X</h3>
+                <p>除了启动自检，任何时候都可以按 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>X</kbd> 手动一键解除控制（托盘菜单也新增「紧急解除控制」）。另外加固了"退出后保存窗口属性"：保存/恢复时会<strong>自动跳过系统外壳窗口</strong>（任务栏、桌面、DefView 等），从根上避免把任务栏或桌面壁纸层藏起来导致无法操作。</p>
+            </div>
+        </div>
     </section>
 
     <section id="changelog123">
@@ -297,7 +312,7 @@
 
     <section>
         <div class="dl-box">
-            <h2>下载体验 Sakura & Aurora Clock v1.2.3</h2>
+            <h2>下载体验 Sakura & Aurora Clock v1.2.4</h2>
             <p class="desc" style="margin-top: 10px;">适用系统：Windows 10 / 11 (64-bit) &nbsp;|&nbsp; 单文件绿色免安装 &nbsp;|&nbsp; 作者：LXT</p>
             <a href="https://lxt-2025.github.io/Sakura-Clock/SakuraClock.exe" download class="btn-dl">⬇ 下载 SakuraClock.exe</a>
             <a href="https://lxt-2025.github.io/Sakura-Clock/XNJ.zip" download class="btn-sub" style="margin-left: 12px;">⬇ 下载整合包 XNJ.zip</a>
