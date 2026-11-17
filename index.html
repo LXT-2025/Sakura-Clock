@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sakura & Aurora Clock v1.2.5 - 梦幻樱花极光桌面时钟 | By LXT</title>
+    <title>Sakura & Aurora Clock v1.2.6 - 梦幻樱花极光桌面时钟 | By LXT</title>
     <meta name="description" content="梦幻樱花极光桌面时钟：原生 Win32 GDI 双缓冲打造，樱花花瓣飘落、指尖生花、Win11 风格桌面窗口控制中心，单文件绿色免安装，极低资源占用。">
     <meta property="og:title" content="Sakura & Aurora Clock - 梦幻樱花极光桌面时钟">
     <meta property="og:description" content="樱花飘落 × 极光流光 × 指尖生花，轻量级 Windows 桌面悬浮时钟，单文件绿色免安装。">
@@ -125,7 +125,7 @@
             <p class="desc">基于原生 Win32 GDI 双缓冲打造，融合动态流光渐变、樱花花瓣飘落、指尖生花轨迹与 Win11 风格桌面窗口控制中心。v1.2 新增一键切换主题色系、流星划空动效、暖光辉影层次与今日番茄统计，渲染性能较 v1.1 大幅优化，单文件绿色运行，极低资源占用。</p>
             <div class="tags">
                 <span class="tag">Windows 10 / 11</span>
-                <span class="tag">v1.2.5 全新升级</span>
+                <span class="tag">v1.2.6 全新升级</span>
                 <span class="tag">高分屏 DPI 适配</span>
                 <span class="tag">中 / 英双语切换</span>
                 <span class="tag">单文件绿色免安装</span>
@@ -191,9 +191,27 @@
                 <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>S</kbd></td><td>循环切换主题色系（共 6 种）</td></tr>
                 <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>F</kbd></td><td>一键全屏 / 还原时钟窗口（无需聚焦时钟即可触发）</td></tr>
                 <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>X</kbd></td><td><strong>紧急解除控制</strong>：恢复被隐藏的窗口 / 任务栏 / 桌面图标，关闭穿透与全屏透明（鼠标键盘失控时的救命键）</td></tr>
-                <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>U</kbd></td><td><strong>解除外部输入锁定</strong>：释放其他程序留下的光标限制、全局输入封锁、卡住的按键与鼠标捕获</td></tr>
+                <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>U</kbd></td><td><strong>检查输入拦截</strong>：诊断键盘钩子 / 全局封锁 / 光标裁剪 / 鼠标拦截，并生成诊断报告</td></tr>
             </tbody>
         </table>
+    </section>
+
+    <section id="changelog126">
+        <h2>更新日志 · v1.2.6 <span style="font-size:0.8rem;color:#a6a6b8;font-weight:400;">（2026-11-17 发布）</span></h2>
+        <div class="grid">
+            <div class="card">
+                <h3>🪝 识别「别的程序用钩子锁键盘」</h3>
+                <p>很多锁键工具、演示软件、异常退出的游戏会在系统里留下 <strong>WH_KEYBOARD_LL 全局键盘钩子</strong>，后果是所有按键都被吞掉。新版本用一个不依赖自身钩子的探测法：注入一个无人使用的 F24 按键，再读该键的物理按下状态——若状态永远是"未按下"，说明事件在到达系统前就被别人的钩子截断了。据此可精确区分五种情况：<strong>键盘被钩子吞掉 / 输入被系统封锁 / 鼠标被拦截 / 光标被限制在某个区域 / 指针跑到屏幕外</strong>，并附带当前前台程序的进程名。</p>
+            </div>
+            <div class="card">
+                <h3>🔁 自动恢复监视 + 诊断报告</h3>
+                <p>一旦判定存在钩子拦截，程序会每隔 5 秒复检、持续 5 分钟——对方卸载钩子或退出后，立刻弹出「输入已恢复」提示，不用你自己猜。同时一键生成 <code>sakura_input_diag.txt</code>（与 ini 同目录），记录时间、DPI、虚拟桌面、前台程序与五项检测结果，方便定位问题。</p>
+            </div>
+            <div class="card">
+                <h3>⚠️ 关于「卸载别人的钩子」的实话</h3>
+                <p>我们实测确认：<strong>跨进程调用 UnhookWindowsHookEx 只要拿到对方的 HHOOK 确实能生效</strong>。但 HHOOK 无法通过任何受支持的接口枚举（Win11 的 User 句柄表布局未公开且随版本变化，强读有误伤其他程序钩子的风险），所以本程序<strong>不会去碰别人的进程</strong>。真正有效的两条路：① 用任务管理器结束安装钩子的程序（钩子随进程消失）；② 按 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd> 进入安全桌面——用户级钩子在那里不生效，可安全操作。</p>
+            </div>
+        </div>
     </section>
 
     <section id="changelog125">
@@ -331,7 +349,7 @@
 
     <section>
         <div class="dl-box">
-            <h2>下载体验 Sakura & Aurora Clock v1.2.5</h2>
+            <h2>下载体验 Sakura & Aurora Clock v1.2.6</h2>
             <p class="desc" style="margin-top: 10px;">适用系统：Windows 10 / 11 (64-bit) &nbsp;|&nbsp; 单文件绿色免安装 &nbsp;|&nbsp; 作者：LXT</p>
             <a href="https://lxt-2025.github.io/Sakura-Clock/SakuraClock.exe" download class="btn-dl">⬇ 下载 SakuraClock.exe</a>
             <a href="https://lxt-2025.github.io/Sakura-Clock/XNJ.zip" download class="btn-sub" style="margin-left: 12px;">⬇ 下载整合包 XNJ.zip</a>
