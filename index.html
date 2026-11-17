@@ -192,6 +192,20 @@
         </table>
     </section>
 
+    <section id="changelog122">
+        <h2>更新日志 · v1.2.2 <span style="font-size:0.8rem;color:#a6a6b8;font-weight:400;">（2026-11-17 发布）</span></h2>
+        <div class="grid">
+            <div class="card">
+                <h3>🖱️ 拖动光标修复</h3>
+                <p>修复拖动窗口时光标形状错乱的问题：自绘拖拽捕获鼠标期间系统不再派发光标消息，导致上一次的缩放箭头残留到窗口中央。现在按下与拖动全程显式同步光标（移动 = 四向移动箭头，边缘 = 对应缩放箭头），形状与位置始终一致。</p>
+            </div>
+            <div class="card">
+                <h3>📝 文字渲染优化</h3>
+                <p>时钟时间/日期等文字改用灰度抗锯齿渲染，彻底消除 ClearType 子像素彩边（录屏放大后尤为明显的红蓝色散），画面更干净；同时适配高 DPI 显示器（窗口默认尺寸与提示文字按屏幕缩放率等比放大，跨屏移动自动跟随 DPI）。</p>
+            </div>
+        </div>
+    </section>
+
     <section id="changelog121">
         <h2>更新日志 · v1.2.1 <span style="font-size:0.8rem;color:#a6a6b8;font-weight:400;">（2026-11-17 发布）</span></h2>
         <div class="grid">
