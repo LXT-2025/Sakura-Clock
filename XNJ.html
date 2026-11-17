@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sakura & Aurora Clock v1.2 - 梦幻樱花极光桌面时钟 | By LXT</title>
+    <title>Sakura & Aurora Clock v1.2.3 - 梦幻樱花极光桌面时钟 | By LXT</title>
     <meta name="description" content="梦幻樱花极光桌面时钟：原生 Win32 GDI 双缓冲打造，樱花花瓣飘落、指尖生花、Win11 风格桌面窗口控制中心，单文件绿色免安装，极低资源占用。">
     <meta property="og:title" content="Sakura & Aurora Clock - 梦幻樱花极光桌面时钟">
     <meta property="og:description" content="樱花飘落 × 极光流光 × 指尖生花，轻量级 Windows 桌面悬浮时钟，单文件绿色免安装。">
@@ -125,7 +125,7 @@
             <p class="desc">基于原生 Win32 GDI 双缓冲打造，融合动态流光渐变、樱花花瓣飘落、指尖生花轨迹与 Win11 风格桌面窗口控制中心。v1.2 新增一键切换主题色系、流星划空动效、暖光辉影层次与今日番茄统计，渲染性能较 v1.1 大幅优化，单文件绿色运行，极低资源占用。</p>
             <div class="tags">
                 <span class="tag">Windows 10 / 11</span>
-                <span class="tag">v1.2 全新升级</span>
+                <span class="tag">v1.2.3 全新升级</span>
                 <span class="tag">高分屏 DPI 适配</span>
                 <span class="tag">中 / 英双语切换</span>
                 <span class="tag">单文件绿色免安装</span>
@@ -172,9 +172,10 @@
                 <tr><td><kbd>R</kbd></td><td>计时器 <strong>重置</strong> 为 25 分钟</td></tr>
                 <tr><td><kbd>T</kbd></td><td>开启 / 关闭时钟窗口 <strong>始终置顶</strong></td></tr>
                 <tr><td><kbd>鼠标滚轮</kbd></td><td><strong>平滑</strong> 调节时钟窗口透明度</td></tr>
-                <tr><td><kbd>双击窗口</kbd></td><td>切换 <strong>纯净模式</strong>（隐藏/显示底部提示栏）</td></tr>
-                <tr><td><kbd>右键窗口</kbd></td><td>弹出完整功能菜单（显示/隐藏、置顶、穿透、自启、12/24 小时制、显示秒、退出）</td></tr>
-                <tr><td><kbd>ESC</kbd></td><td>关闭弹窗或退出程序（自动恢复所有隐藏项目）</td></tr>
+                <tr><td><kbd>双击窗口</kbd></td><td>切换 <strong>纯净模式</strong>（隐藏/显示底部提示栏）；<strong>全屏时双击 = 退出全屏</strong></td></tr>
+                <tr><td><kbd>F11</kbd></td><td><strong>一键全屏</strong> / 还原（时钟铺满整屏，再按精确还原原窗口位置与大小）</td></tr>
+                <tr><td><kbd>右键窗口</kbd></td><td>弹出完整功能菜单（显示/隐藏、全屏、置顶、穿透、自启、12/24 小时制、显示秒、退出）</td></tr>
+                <tr><td><kbd>ESC</kbd></td><td>全屏时先退出全屏；非全屏时关闭弹窗或退出程序（自动恢复所有隐藏项目）</td></tr>
             </tbody>
         </table>
 
@@ -188,8 +189,23 @@
                 <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>P</kbd></td><td>切换鼠标点击穿透（穿透后点击直达桌面）</td></tr>
                 <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>C</kbd></td><td>开启 / 关闭专注计时面板</td></tr>
                 <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>S</kbd></td><td>循环切换主题色系（共 6 种）</td></tr>
+                <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>F</kbd></td><td>一键全屏 / 还原时钟窗口（无需聚焦时钟即可触发）</td></tr>
             </tbody>
         </table>
+    </section>
+
+    <section id="changelog123">
+        <h2>更新日志 · v1.2.3 <span style="font-size:0.8rem;color:#a6a6b8;font-weight:400;">（2026-11-17 发布）</span></h2>
+        <div class="grid">
+            <div class="card">
+                <h3>🖥️ F11 一键全屏</h3>
+                <p>新增 <strong>F11 一键全屏</strong>：时钟瞬间铺满整个显示器，巨型时间数字 + 日期/节日信息，秒变桌面氛围大屏。再按 F11 或双击画面即可精确还原进入前的窗口位置与大小；<kbd>Esc</kbd> 也会先退出全屏再退出程序，不易误触。全屏期间自动临时置顶（可覆盖任务栏）、禁用拖拽缩放，退出后完整恢复置顶状态。</p>
+            </div>
+            <div class="card">
+                <h3>⌨️ 全局热键 Ctrl+Alt+F</h3>
+                <p>考虑到桌面时钟常常不在焦点，额外提供全局热键 <strong>Ctrl+Alt+F</strong>，任何界面下都能一键切换全屏；托盘菜单同步新增「全屏显示」开关项（当前状态打勾）。F11 本身不注册为全局键，不会抢占浏览器等其它软件的全屏功能。设置窗热键提示已更新为两行排版，收录全部快捷键。</p>
+            </div>
+        </div>
     </section>
 
     <section id="changelog122">
@@ -281,7 +297,7 @@
 
     <section>
         <div class="dl-box">
-            <h2>下载体验 Sakura & Aurora Clock v1.2</h2>
+            <h2>下载体验 Sakura & Aurora Clock v1.2.3</h2>
             <p class="desc" style="margin-top: 10px;">适用系统：Windows 10 / 11 (64-bit) &nbsp;|&nbsp; 单文件绿色免安装 &nbsp;|&nbsp; 作者：LXT</p>
             <a href="https://lxt-2025.github.io/Sakura-Clock/SakuraClock.exe" download class="btn-dl">⬇ 下载 SakuraClock.exe</a>
             <a href="https://lxt-2025.github.io/Sakura-Clock/XNJ.zip" download class="btn-sub" style="margin-left: 12px;">⬇ 下载整合包 XNJ.zip</a>
