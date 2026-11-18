@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sakura & Aurora Clock v1.6.0 - 梦幻樱花极光桌面时钟 | By LXT</title>
+    <title>Sakura & Aurora Clock v1.6.1 - 梦幻樱花极光桌面时钟 | By LXT</title>
     <meta name="description" content="梦幻樱花极光桌面时钟：原生 Win32 GDI 双缓冲打造，樱花花瓣飘落、指尖生花、Win11 风格桌面窗口控制中心，单文件绿色免安装，极低资源占用。">
     <meta property="og:title" content="Sakura & Aurora Clock - 梦幻樱花极光桌面时钟">
     <meta property="og:description" content="樱花飘落 × 极光流光 × 指尖生花，轻量级 Windows 桌面悬浮时钟，单文件绿色免安装。">
@@ -125,7 +125,7 @@
             <p class="desc">基于原生 Win32 GDI 双缓冲打造，融合动态流光渐变、樱花花瓣飘落、指尖生花轨迹与 Win11 风格桌面窗口控制中心。v1.2 新增一键切换主题色系、流星划空动效、暖光辉影层次与今日番茄统计，渲染性能较 v1.1 大幅优化，单文件绿色运行，极低资源占用。</p>
             <div class="tags">
                 <span class="tag">Windows 10 / 11</span>
-                <span class="tag">v1.6.0 全新升级</span>
+                <span class="tag">v1.6.1 全新升级</span>
                 <span class="tag">高分屏 DPI 适配</span>
                 <span class="tag">中 / 英双语切换</span>
                 <span class="tag">单文件绿色免安装</span>
@@ -195,7 +195,7 @@
                 <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>U</kbd></td><td><strong>检查输入拦截</strong>：诊断键盘钩子 / 全局封锁 / 光标裁剪 / 鼠标拦截，并生成诊断报告</td></tr>
             </tbody>
         </table>
-        <p style="margin-top:14px;color:#c9c9d8;font-size:0.95rem;">托盘菜单另有两项：<strong>识别拦截来源（钩子 / 过滤驱动 / 课堂软件）</strong>、<strong>打开输入诊断报告</strong>；需要把报告发给别人时，也可以直接跑 <code>Sakura Clock.exe --input-diag</code>，一条命令生成同目录下的 <code>sakura_input_diag.txt</code>。面对极域电子教室这类锁屏，还有<strong>极域对抗模式</strong>：检测到锁屏自动挂起对方进程（不结束，可一键恢复），命令行为 <code>--fight</code> / <code>--unfight</code>。</p>
+        <p style="margin-top:14px;color:#c9c9d8;font-size:0.95rem;">托盘菜单另有两项：<strong>识别拦截来源（钩子 / 过滤驱动 / 课堂软件）</strong>、<strong>打开输入诊断报告</strong>；需要把报告发给别人时，也可以直接跑 <code>Sakura Clock.exe --input-diag</code>，一条命令生成同目录下的 <code>sakura_input_diag.txt</code>。面对极域电子教室这类锁屏，还有<strong>极域对抗模式</strong>：检测到锁屏自动挂起对方进程（不结束，可一键恢复），并<strong>自动取消其窗口强制置顶、阻止其反复抢置顶导致的任务栏图标黄色闪烁</strong>，命令行为 <code>--fight</code> / <code>--unfight</code>。</p>
     </section>
 
     <section id="eaglercraft">
@@ -233,6 +233,13 @@
         </div>
     </section>
 
+    <section id="changelog161">
+        <h2>更新日志 · v1.6.1 <span style="font-size:0.8rem;color:#a6a6b8;font-weight:400;">（2026-11-18 发布）</span></h2>
+        <div class="changelog-item">
+            <h3>📌 极域对抗升级：自动取消强制置顶 + 阻止反复抢置顶</h3>
+            <p>极域对抗模式新增两项窗口级对策：<strong>① 自动取消置顶</strong>——发现极域等课堂软件的窗口带 <code>WS_EX_TOPMOST</code> 强制置顶，立即 <code>SetWindowPos(HWND_NOTOPMOST)</code> 摘掉，恢复时原样放回（保持全程可逆）；<strong>② 阻止反复尝试置顶</strong>——极域抢不到前台时，Windows 会不停闪烁它的任务栏按钮（任务栏图标变黄），本版对它的每个窗口执行 <code>FlashWindowEx(FLASHW_STOP)</code> 立即停闪，并新增 <strong>500ms 置顶守卫</strong>轮询：它再抢置顶就再摘、再闪就再停；挂起期间若其窗口重新弹出或置顶（挂起不彻底的兜底），也会被立刻按回去。守卫顺带处理挂起目标被教师端关闭的情况——静默复位状态，等待下次自动检测。</p>
+        </div>
+    </section>
     <section id="changelog160">
         <h2>更新日志 · v1.6.0 <span style="font-size:0.8rem;color:#a6a6b8;font-weight:400;">（2026-11-18 发布）</span></h2>
         <div class="changelog-item">
@@ -486,7 +493,7 @@
 
     <section>
         <div class="dl-box">
-            <h2>下载体验 Sakura & Aurora Clock v1.6.0</h2>
+            <h2>下载体验 Sakura & Aurora Clock v1.6.1</h2>
             <p class="desc" style="margin-top: 10px;">适用系统：Windows 10 / 11 (64-bit) &nbsp;|&nbsp; 单文件绿色免安装 &nbsp;|&nbsp; 作者：LXT</p>
             <a href="https://lxt-2025.github.io/Sakura-Clock/SakuraClock.exe" download class="btn-dl">⬇ 下载 SakuraClock.exe</a>
             <a href="https://lxt-2025.github.io/Sakura-Clock/XNJ.zip" download class="btn-sub" style="margin-left: 12px;">⬇ 下载整合包 XNJ.zip</a>
