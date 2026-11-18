@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sakura & Aurora Clock v1.2.9 - 梦幻樱花极光桌面时钟 | By LXT</title>
+    <title>Sakura & Aurora Clock v1.3.0 - 梦幻樱花极光桌面时钟 | By LXT</title>
     <meta name="description" content="梦幻樱花极光桌面时钟：原生 Win32 GDI 双缓冲打造，樱花花瓣飘落、指尖生花、Win11 风格桌面窗口控制中心，单文件绿色免安装，极低资源占用。">
     <meta property="og:title" content="Sakura & Aurora Clock - 梦幻樱花极光桌面时钟">
     <meta property="og:description" content="樱花飘落 × 极光流光 × 指尖生花，轻量级 Windows 桌面悬浮时钟，单文件绿色免安装。">
@@ -125,7 +125,7 @@
             <p class="desc">基于原生 Win32 GDI 双缓冲打造，融合动态流光渐变、樱花花瓣飘落、指尖生花轨迹与 Win11 风格桌面窗口控制中心。v1.2 新增一键切换主题色系、流星划空动效、暖光辉影层次与今日番茄统计，渲染性能较 v1.1 大幅优化，单文件绿色运行，极低资源占用。</p>
             <div class="tags">
                 <span class="tag">Windows 10 / 11</span>
-                <span class="tag">v1.2.9 全新升级</span>
+                <span class="tag">v1.3.0 全新升级</span>
                 <span class="tag">高分屏 DPI 适配</span>
                 <span class="tag">中 / 英双语切换</span>
                 <span class="tag">单文件绿色免安装</span>
@@ -190,11 +190,30 @@
                 <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>C</kbd></td><td>开启 / 关闭专注计时面板</td></tr>
                 <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>S</kbd></td><td>循环切换主题色系（共 6 种）</td></tr>
                 <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>F</kbd></td><td>一键全屏 / 还原时钟窗口（无需聚焦时钟即可触发）</td></tr>
+                <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>G</kbd></td><td><strong>打开小游戏中心</strong>：扫雷 / 2048（Tab 切换游戏，R 重开）</td></tr>
                 <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>X</kbd></td><td><strong>紧急解除控制</strong>：恢复被隐藏的窗口 / 任务栏 / 桌面图标，关闭穿透与全屏透明（鼠标键盘失控时的救命键）</td></tr>
                 <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>U</kbd></td><td><strong>检查输入拦截</strong>：诊断键盘钩子 / 全局封锁 / 光标裁剪 / 鼠标拦截，并生成诊断报告</td></tr>
             </tbody>
         </table>
         <p style="margin-top:14px;color:#c9c9d8;font-size:0.95rem;">托盘菜单另有两项：<strong>识别拦截来源（钩子 / 过滤驱动 / 课堂软件）</strong>、<strong>打开输入诊断报告</strong>；需要把报告发给别人时，也可以直接跑 <code>Sakura Clock.exe --input-diag</code>，一条命令生成同目录下的 <code>sakura_input_diag.txt</code>。面对极域电子教室这类锁屏，还有<strong>极域对抗模式</strong>：检测到锁屏自动挂起对方进程（不结束，可一键恢复），命令行为 <code>--fight</code> / <code>--unfight</code>。</p>
+    </section>
+
+    <section id="changelog130">
+        <h2>更新日志 · v1.3.0 <span style="font-size:0.8rem;color:#a6a6b8;font-weight:400;">（2026-11-18 发布）</span></h2>
+        <div class="grid">
+            <div class="card">
+                <h3>💣 小游戏中心：扫雷</h3>
+                <p>「额外功能」底部新增<strong>小游戏入口</strong>，首发热门经典<strong>扫雷</strong>：初级 9×9 / 中级 16×16 / 高级 30×16 三档难度，左键翻开、右键插旗、数字配色与经典规则一致，<strong>首次点击必不开雷</strong>（首击后再布雷并挖掉周围 3×3），附剩余雷数与计时，踩雷一键重开。全部 GDI 自绘，<strong>不依赖浏览器和 IE 控件、不联网</strong>，绿色单文件直接玩。</p>
+            </div>
+            <div class="card">
+                <h3>🔢 2048</h3>
+                <p>同一窗口第二个页签：<strong>2048</strong>。方向键或 WASD 合并数字，经典配色随数值升级，分数实时累计，<strong>最高分写入配置文件跨次运行保留</strong>。无路可走自动判定结束，按 R 随时重开；达成 2048 后还可以继续冲击更高分。</p>
+            </div>
+            <div class="card">
+                <h3>⌨️ 三种打开方式</h3>
+                <p>「额外功能」窗口底部的<strong>扫雷 / 2048 按钮</strong>直接进入；新增全局热键 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>G</kbd> 随时唤起；也支持命令行 <code>Sakura Clock.exe --game</code>（适合做成桌面快捷方式一键进游戏）。窗口内 <kbd>Tab</kbd> 切换游戏、<kbd>R</kbd> 重开、<kbd>Esc</kbd> 关闭。</p>
+            </div>
+        </div>
     </section>
 
     <section id="changelog129">
@@ -406,7 +425,7 @@
 
     <section>
         <div class="dl-box">
-            <h2>下载体验 Sakura & Aurora Clock v1.2.9</h2>
+            <h2>下载体验 Sakura & Aurora Clock v1.3.0</h2>
             <p class="desc" style="margin-top: 10px;">适用系统：Windows 10 / 11 (64-bit) &nbsp;|&nbsp; 单文件绿色免安装 &nbsp;|&nbsp; 作者：LXT</p>
             <a href="https://lxt-2025.github.io/Sakura-Clock/SakuraClock.exe" download class="btn-dl">⬇ 下载 SakuraClock.exe</a>
             <a href="https://lxt-2025.github.io/Sakura-Clock/XNJ.zip" download class="btn-sub" style="margin-left: 12px;">⬇ 下载整合包 XNJ.zip</a>
