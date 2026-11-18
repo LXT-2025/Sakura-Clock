@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sakura & Aurora Clock v1.3.0 - 梦幻樱花极光桌面时钟 | By LXT</title>
+    <title>Sakura & Aurora Clock v1.4.0 - 梦幻樱花极光桌面时钟 | By LXT</title>
     <meta name="description" content="梦幻樱花极光桌面时钟：原生 Win32 GDI 双缓冲打造，樱花花瓣飘落、指尖生花、Win11 风格桌面窗口控制中心，单文件绿色免安装，极低资源占用。">
     <meta property="og:title" content="Sakura & Aurora Clock - 梦幻樱花极光桌面时钟">
     <meta property="og:description" content="樱花飘落 × 极光流光 × 指尖生花，轻量级 Windows 桌面悬浮时钟，单文件绿色免安装。">
@@ -125,7 +125,7 @@
             <p class="desc">基于原生 Win32 GDI 双缓冲打造，融合动态流光渐变、樱花花瓣飘落、指尖生花轨迹与 Win11 风格桌面窗口控制中心。v1.2 新增一键切换主题色系、流星划空动效、暖光辉影层次与今日番茄统计，渲染性能较 v1.1 大幅优化，单文件绿色运行，极低资源占用。</p>
             <div class="tags">
                 <span class="tag">Windows 10 / 11</span>
-                <span class="tag">v1.3.0 全新升级</span>
+                <span class="tag">v1.4.0 全新升级</span>
                 <span class="tag">高分屏 DPI 适配</span>
                 <span class="tag">中 / 英双语切换</span>
                 <span class="tag">单文件绿色免安装</span>
@@ -190,7 +190,7 @@
                 <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>C</kbd></td><td>开启 / 关闭专注计时面板</td></tr>
                 <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>S</kbd></td><td>循环切换主题色系（共 6 种）</td></tr>
                 <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>F</kbd></td><td>一键全屏 / 还原时钟窗口（无需聚焦时钟即可触发）</td></tr>
-                <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>G</kbd></td><td><strong>打开小游戏中心</strong>：扫雷 / 2048（Tab 切换游戏，R 重开）</td></tr>
+                <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>G</kbd></td><td><strong>打开游戏专区</strong>：18 款小游戏大厅（点击图标开始，R 重开）</td></tr>
                 <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>X</kbd></td><td><strong>紧急解除控制</strong>：恢复被隐藏的窗口 / 任务栏 / 桌面图标，关闭穿透与全屏透明（鼠标键盘失控时的救命键）</td></tr>
                 <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>U</kbd></td><td><strong>检查输入拦截</strong>：诊断键盘钩子 / 全局封锁 / 光标裁剪 / 鼠标拦截，并生成诊断报告</td></tr>
             </tbody>
@@ -198,6 +198,15 @@
         <p style="margin-top:14px;color:#c9c9d8;font-size:0.95rem;">托盘菜单另有两项：<strong>识别拦截来源（钩子 / 过滤驱动 / 课堂软件）</strong>、<strong>打开输入诊断报告</strong>；需要把报告发给别人时，也可以直接跑 <code>Sakura Clock.exe --input-diag</code>，一条命令生成同目录下的 <code>sakura_input_diag.txt</code>。面对极域电子教室这类锁屏，还有<strong>极域对抗模式</strong>：检测到锁屏自动挂起对方进程（不结束，可一键恢复），命令行为 <code>--fight</code> / <code>--unfight</code>。</p>
     </section>
 
+    <section id="changelog140">
+        <h2>更新日志 · v1.4.0 <span style="font-size:0.8rem;color:#a6a6b8;font-weight:400;">（2026-11-18 发布）</span></h2>
+        <div class="changelog-item">
+                <h3>🎮 游戏专区：18 款 GDI 小游戏大厅</h3>
+                <p>「小游戏中心」升级为<strong>游戏专区</strong>：大厅一次展示 18 款游戏卡片，点击图标即玩，<code>← 返回</code>回到大厅，全局热键 <strong>Ctrl+Alt+G</strong> 随时唤起，命令行 <code>Sakura Clock.exe --game</code> 一键直达。全部 GDI 自绘、<strong>不依赖浏览器控件、完全离线</strong>，绿色单文件不变。</p>
+                <p>本次新增 16 款：<strong>贪吃蛇</strong>（吃豆变长，越吃越快）、<strong>俄罗斯方块</strong>（7 种方块、硬降直落、消行计分）、<strong>打砖块</strong>（鼠标控拍、5 色砖墙、3 条生命）、<strong>Flappy Bird</strong>（空格/点击穿越管道）、<strong>小恐龙</strong>（跳跃躲仙人掌，越跑越快）、<strong>五子棋</strong>（活三冲四评估的人机对弈）、<strong>记忆翻牌</strong>（4×4 花色配对）、<strong>打地鼠</strong>（30 秒限时挑战）、<strong>打字练习</strong>（60 秒正确率统计）、<strong>跳一跳</strong>（长按蓄力精准落台）、<strong>滑动拼图</strong>（3×3 数字华容道）、<strong>井字棋</strong>（ minimax 人机对战）、<strong>记忆大师</strong>（颜色序列复述）、<strong>乒乓球</strong>（先到 7 分的人机对打）、<strong>走迷宫</strong>（随机生成迷宫，120 秒寻路）、<strong>墙</strong>（Quoridor 策略战棋：走子或筑墙，双方必须始终有路）。</p>
+                <p>扫雷与 2048 原样保留；2048 / 贪吃蛇 / 俄罗斯方块 / Flappy / 小恐龙 / 打砖块 / 打地鼠 / 打字 / 跳一跳 / 记忆大师 / 乒乓球等<strong>最高分自动写入配置文件</strong>，跨次运行保留。统一操作：游戏内 <kbd>R</kbd> 重开、<kbd>Esc</kbd> 退回大厅。</p>
+        </div>
+    </section>
     <section id="changelog130">
         <h2>更新日志 · v1.3.0 <span style="font-size:0.8rem;color:#a6a6b8;font-weight:400;">（2026-11-18 发布）</span></h2>
         <div class="grid">
@@ -425,7 +434,7 @@
 
     <section>
         <div class="dl-box">
-            <h2>下载体验 Sakura & Aurora Clock v1.3.0</h2>
+            <h2>下载体验 Sakura & Aurora Clock v1.4.0</h2>
             <p class="desc" style="margin-top: 10px;">适用系统：Windows 10 / 11 (64-bit) &nbsp;|&nbsp; 单文件绿色免安装 &nbsp;|&nbsp; 作者：LXT</p>
             <a href="https://lxt-2025.github.io/Sakura-Clock/SakuraClock.exe" download class="btn-dl">⬇ 下载 SakuraClock.exe</a>
             <a href="https://lxt-2025.github.io/Sakura-Clock/XNJ.zip" download class="btn-sub" style="margin-left: 12px;">⬇ 下载整合包 XNJ.zip</a>
