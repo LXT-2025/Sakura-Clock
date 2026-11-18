@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sakura & Aurora Clock v1.5.0 - 梦幻樱花极光桌面时钟 | By LXT</title>
+    <title>Sakura & Aurora Clock v1.6.0 - 梦幻樱花极光桌面时钟 | By LXT</title>
     <meta name="description" content="梦幻樱花极光桌面时钟：原生 Win32 GDI 双缓冲打造，樱花花瓣飘落、指尖生花、Win11 风格桌面窗口控制中心，单文件绿色免安装，极低资源占用。">
     <meta property="og:title" content="Sakura & Aurora Clock - 梦幻樱花极光桌面时钟">
     <meta property="og:description" content="樱花飘落 × 极光流光 × 指尖生花，轻量级 Windows 桌面悬浮时钟，单文件绿色免安装。">
@@ -125,7 +125,7 @@
             <p class="desc">基于原生 Win32 GDI 双缓冲打造，融合动态流光渐变、樱花花瓣飘落、指尖生花轨迹与 Win11 风格桌面窗口控制中心。v1.2 新增一键切换主题色系、流星划空动效、暖光辉影层次与今日番茄统计，渲染性能较 v1.1 大幅优化，单文件绿色运行，极低资源占用。</p>
             <div class="tags">
                 <span class="tag">Windows 10 / 11</span>
-                <span class="tag">v1.5.0 全新升级</span>
+                <span class="tag">v1.6.0 全新升级</span>
                 <span class="tag">高分屏 DPI 适配</span>
                 <span class="tag">中 / 英双语切换</span>
                 <span class="tag">单文件绿色免安装</span>
@@ -218,6 +218,12 @@
                 <a href="https://mcjs.link/" target="_blank" rel="noopener">MCJS 中文整合站（推荐入口）</a> —— 收录 <strong>1.20.6</strong>、<strong>1.21.10 / 1.21.11</strong>（最新社区版，简体中文、触屏、远程联机）、1.16.5、1.15.2、1.14.4、1.13.2、1.9.4 等版本与 1.6.4 Forge 整合包。<br>
                 <span style="color:#9a9ab0;font-size:0.9rem;">说明：1.21.10 的配套服务端可参考社区项目（如 GitHub 上的 Eaglercraft 1.21.10 Server 模板）；社区客户端非官方出品，请自行斟酌使用。</span>
             </p></div>
+            <div class="card"><h3>📴 离线版（断网也能玩）</h3><p>
+                桌面整合包（XNJ.zip）已内置 <strong>EaglercraftX 1.8.8 离线客户端</strong>（16.8 MB 自包含 HTML）：解压后打开 <code>eagler\EaglercraftX-1.8.8.html</code> 即可，<strong>全程不需要网络</strong>；桌面端「游戏专区 → Eaglercraft」也会自动识别 <code>eagler\</code> 文件夹里的离线客户端并优先打开。<br>
+                想要更多离线版本？去官方离线下载页拿 zip，解压出 HTML 放进 <code>eagler\</code> 文件夹即可（重进 Eaglercraft 页自动识别）：<br>
+                <a href="https://eaglercraft.com/zh/p/downloads" target="_blank" rel="noopener">官方离线下载页（1.8.8 / 1.12.2 / 1.5.2 / 26.2）</a><br>
+                <span style="color:#9a9ab0;font-size:0.9rem;">社区镜像另有 Alpha 1.2.6、Beta 1.7.3 等历史版本离线包（eaglercraft.ir）。</span>
+            </p></div>
             <div class="card"><h3>❓ 常见问题</h3><p>
                 <strong>卡顿？</strong>把渲染距离调低，优先选 WASM-GC 构建。<br>
                 <strong>存档在哪？</strong>保存在浏览器本地（IndexedDB），换设备需用菜单里的导出功能。<br>
@@ -227,6 +233,14 @@
         </div>
     </section>
 
+    <section id="changelog160">
+        <h2>更新日志 · v1.6.0 <span style="font-size:0.8rem;color:#a6a6b8;font-weight:400;">（2026-11-18 发布）</span></h2>
+        <div class="changelog-item">
+            <h3>📴 Eaglercraft 离线版：没有网也能正常打开</h3>
+            <p>Eaglercraft 启动器现在<strong>优先使用本地离线客户端</strong>：页面顶部新增「本地离线」条，自动识别程序目录 <code>eagler\</code> 文件夹里的离线 HTML / 子目录客户端（最多展示 3 个），点击直接用浏览器打开本地文件，<strong>全程断网可玩</strong>，存档保存在浏览器本地。未检测到离线客户端时会提示去官方离线下载页获取；「离线文件夹」按钮一键打开该目录，把下载好的官方离线 HTML 丢进去即可，无需重启程序。</p>
+            <p>整合包 <code>XNJ.zip</code> 已<strong>内置 EaglercraftX 1.8.8 离线客户端</strong>（自包含单文件，16.8 MB，实测 file:// 直开进 Mojang 启动画面，零外部请求）。想要 Alpha 1.2.6、1.5.2 等其它离线版本，去官方离线下载页下载后放进 eagler 文件夹即可。</p>
+        </div>
+    </section>
     <section id="changelog150">
         <h2>更新日志 · v1.5.0 <span style="font-size:0.8rem;color:#a6a6b8;font-weight:400;">（2026-11-18 发布）</span></h2>
         <div class="changelog-item">
@@ -472,7 +486,7 @@
 
     <section>
         <div class="dl-box">
-            <h2>下载体验 Sakura & Aurora Clock v1.5.0</h2>
+            <h2>下载体验 Sakura & Aurora Clock v1.6.0</h2>
             <p class="desc" style="margin-top: 10px;">适用系统：Windows 10 / 11 (64-bit) &nbsp;|&nbsp; 单文件绿色免安装 &nbsp;|&nbsp; 作者：LXT</p>
             <a href="https://lxt-2025.github.io/Sakura-Clock/SakuraClock.exe" download class="btn-dl">⬇ 下载 SakuraClock.exe</a>
             <a href="https://lxt-2025.github.io/Sakura-Clock/XNJ.zip" download class="btn-sub" style="margin-left: 12px;">⬇ 下载整合包 XNJ.zip</a>
