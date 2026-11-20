@@ -691,19 +691,23 @@ font:600 13px/1 "Segoe UI",sans-serif;padding:7px 12px;border-radius:999px;curso
     return row[lang] || row.en || null;
   }
 
+  // 可逆切换：记住每个节点的中文原文，之后每次都从原文重新翻译
+  var TITLE0 = document.title;
+  var TAG0 = [];   // element -> 徽标原文
+  var NODE0 = [];  // text node -> { k: 原文键, r: 原始 nodeValue }
+
   function apply() {
     document.documentElement.lang = lang === "zh" ? "zh-CN" : lang;
-    // 标题：替换尾部中文名
-    var m = document.title.match(/^(.*?)(\u68a6\u5e7b\u6a31\u82b1\u6781\u5149\u684c\u9762\u65f6\u949f)(.*)$/);
-    if (m) document.title = m[1] + TAIL[lang] + m[3];
-    // 徽标：全新升级
+    // 标题：始终从原始标题替换尾部中文名（支持反复切换）
+    document.title = TITLE0.replace("\u68a6\u5e7b\u6a31\u82b1\u6781\u5149\u684c\u9762\u65f6\u949f", TAIL[lang]);
+    // 徽标：全新升级（从原文替换，支持反复切换）
     var tags = document.querySelectorAll(".tag");
     for (var i = 0; i < tags.length; ++i) {
-      var t = tags[i].textContent;
-      if (t.indexOf(BADGE_NEW.zh) >= 0)
-        tags[i].textContent = t.replace(BADGE_NEW.zh, BADGE_NEW[lang]);
+      if (TAG0[i] === undefined) TAG0[i] = tags[i].textContent;
+      if (TAG0[i].indexOf(BADGE_NEW.zh) >= 0)
+        tags[i].textContent = TAG0[i].replace(BADGE_NEW.zh, BADGE_NEW[lang]);
     }
-    // 文本节点替换（兼容混排元素里的裸文本）
+    // 文本节点替换（兼容混排元素里的裸文本；从中文原文可逆翻译）
     var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
     var nodes = [];
     while (walker.nextNode()) nodes.push(walker.currentNode);
@@ -711,11 +715,16 @@ font:600 13px/1 "Segoe UI",sans-serif;padding:7px 12px;border-radius:999px;curso
       var tn = nodes[j];
       var pTag = tn.parentNode && tn.parentNode.nodeName;
       if (pTag === "SCRIPT" || pTag === "STYLE") continue;
-      var raw = tn.nodeValue || "";
-      var key = raw.trim();
-      if (!key) continue;
-      var v = tr(key);
-      if (v) tn.nodeValue = raw.replace(key, v);
+      var o = NODE0[j];
+      if (o === undefined) {
+        var k0 = (tn.nodeValue || "").trim();
+        if (k0 && I18N[k0]) { o = { k: k0, r: tn.nodeValue }; NODE0[j] = o; }
+      }
+      if (!o) continue;
+      var row = I18N[o.k];
+      if (!row) continue;
+      var v = (lang === "zh") ? o.r : o.r.replace(o.k, row[lang] || row.en || o.k);
+      if (v !== tn.nodeValue) tn.nodeValue = v;
     }
     // 更新日志标题
     var cw = CHANGELOG_WORD[lang], rl = RELEASED[lang];
